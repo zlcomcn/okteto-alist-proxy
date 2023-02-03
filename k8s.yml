@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alist-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alist-proxy
+  template:
+    metadata:
+      labels:
+        app: alist-proxy
+    spec:
+      containers:
+      - image: okteto.dev/go-hello-world:1.0.0
+        name: alist-proxy
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: alist-proxy
+spec:
+  type: ClusterIP
+  ports:
+  - name: "alist-proxy"
+    port: 8080
+  selector:
+    app: alist-proxy
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hello-world
+  annotations:
+    dev.okteto.com/generate-host: alist-proxy
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: alist-proxy
+            port:
+              number: 8080
+        path: /
+        pathType: ImplementationSpecific
