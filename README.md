@@ -1,4 +1,4 @@
 # alist-proxy
 
-- [x] cloudflare workers
-- [x] golang
+- [x] 在okteto上部署alist-proxy
+
