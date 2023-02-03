@@ -13,7 +13,7 @@ spec:
         app: alist-proxy
     spec:
       containers:
-      - image: okteto.dev/go-hello-world:1.0.0
+      - image: okteto.dev/alist-proxy:1.0.0
         name: alist-proxy
 
 ---
@@ -35,7 +35,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: hello-world
+  name: alist-proxy
   annotations:
     dev.okteto.com/generate-host: alist-proxy
 spec:
