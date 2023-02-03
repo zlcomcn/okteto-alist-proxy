@@ -38,8 +38,8 @@ func init() {
 	flag.BoolVar(&help, "help", false, "show help")
 	flag.StringVar(&certFile, "cert", "server.crt", "cert file")
 	flag.StringVar(&keyFile, "key", "server.key", "key file")
-	flag.StringVar(&address, "address", "https://panku.ml", "alist address")
-	flag.StringVar(&token, "token", "alist-f822b73a-9775-4137-83e9-e1512a1b347e6IdO8B0LDnQNERZvg1cjuOnDbU1QCcid6JXGjeCVszbRVQEgQNrE3iRYJzcG7XB0", "alist token")
+	flag.StringVar(&address, "address", "", "alist address")
+	flag.StringVar(&token, "token", "", "alist token")
 	flag.Parse()
 	s = sign.NewHMACSign([]byte(token))
 }
