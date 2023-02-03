@@ -1,16 +1,23 @@
-name: okteto-alist-proxy
-image: okteto/golang:1
-command: bash
-securityContext:
-  capabilities:
-    add:
-    - SYS_PTRACE
-sync:
-- .:/usr/src/app
-forward:
-- 2345:2345
-- 8080:8080
-autocreate: true
-volumes:
-- /go/pkg/
-- /root/.cache/go-build/
+build:
+  hello-world:
+    image: okteto.dev/alist-proxy:1.0.0
+    context: .
+
+deploy:
+  - kubectl apply -f k8s.yml
+
+dev:
+  hello-world:
+    image: okteto/golang:1
+    command: bash
+    sync:
+      - .:/usr/src/app
+    volumes:
+      - /go
+      - /root/.cache
+    securityContext:
+      capabilities:
+        add:
+          - SYS_PTRACE
+    forward:
+      - 8080:8080
