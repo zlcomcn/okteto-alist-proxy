@@ -26,7 +26,7 @@ spec:
   type: ClusterIP
   ports:
   - name: "alist-proxy"
-    port: 8080
+    port: 5243
   selector:
     app: alist-proxy
 
@@ -46,6 +46,6 @@ spec:
           service:
             name: alist-proxy
             port:
-              number: 8080
+              number: 5243
         path: /
         pathType: ImplementationSpecific
