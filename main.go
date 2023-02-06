@@ -33,7 +33,7 @@ var (
 )
 
 func init() {
-	flag.IntVar(&port, "port", 8080, "the proxy port.")
+	flag.IntVar(&port, "port", 5243, "the proxy port.")
 	flag.BoolVar(&https, "https", false, "use https protocol.")
 	flag.BoolVar(&help, "help", false, "show help")
 	flag.StringVar(&certFile, "cert", "server.crt", "cert file")
